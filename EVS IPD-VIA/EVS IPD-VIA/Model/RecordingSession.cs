@@ -1,4 +1,4 @@
-﻿namespace Skyline.DataMiner.Library.EVS.EVS_IPD_VIA.Model
+﻿namespace Skyline.DataMiner.EVS.EVS_IPD_VIA.Model
 {
     using System;
 

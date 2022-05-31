@@ -7,8 +7,8 @@
     <ProjectGuid>{AFC434F6-DBF1-4142-BB70-361CF74128FF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Skyline.DataMiner.Library.EVS.EVS_IPD_VIA</RootNamespace>
-    <AssemblyName>EVS IPD-VIA</AssemblyName>
+    <RootNamespace>Skyline.DataMiner.EVS.EVS_IPD_VIA</RootNamespace>
+    <AssemblyName>Skyline.DataMiner.EVS.EVS IPD-VIA</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
