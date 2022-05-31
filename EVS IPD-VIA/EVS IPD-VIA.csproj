@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Skyline.DataMiner.EVS.EVS_IPD_VIA</RootNamespace>
-    <AssemblyName>SLC.CLib.EVS IPD-VIA</AssemblyName>
+    <AssemblyName>SLC.CLib.EVS_IPD-VIA</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

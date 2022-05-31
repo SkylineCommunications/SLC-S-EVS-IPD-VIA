@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SLC.CLib.EVS IPD-VIA")]
-[assembly: AssemblyDescription("SLC.CLib.EVS IPD-VIA")]
+[assembly: AssemblyTitle("SLC.CLib.EVS_IPD-VIA")]
+[assembly: AssemblyDescription("SLC.CLib.EVS_IPD-VIA")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Skyline Communications")]
 [assembly: AssemblyProduct("DataMiner")]
