@@ -2,7 +2,7 @@
 {
     using Skyline.DataMiner.EVS.EVS_IPD_VIA.Model;
 
-    public class AddOrUpdateRecordingSessionResponseMessage : ResponseMessage
+    public class AddOrUpdateRecordingSessionResult : Result
     {
         public RecordingSession RecordingSession { get; set; }
     }

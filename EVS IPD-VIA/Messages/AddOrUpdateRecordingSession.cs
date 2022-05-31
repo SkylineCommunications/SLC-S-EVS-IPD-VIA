@@ -3,7 +3,7 @@
     using Skyline.DataMiner.Library.Common.InterAppCalls.CallSingle;
     using Skyline.DataMiner.EVS.EVS_IPD_VIA.Model;
 
-    public class AddOrUpdateRecordingSessionRequestMessage : Message
+    public class AddOrUpdateRecordingSession : Message
     {
         public RecordingSession RecordingSession { get; set; }
     }

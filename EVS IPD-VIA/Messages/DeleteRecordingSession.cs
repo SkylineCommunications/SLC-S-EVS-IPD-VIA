@@ -2,7 +2,7 @@
 {
     using Skyline.DataMiner.Library.Common.InterAppCalls.CallSingle;
 
-    public  class DeleteRecordingSessionRequestMessage : Message
+    public  class DeleteRecordingSession : Message
     {
         public string RecordingSessionsId { get; set; }
     }

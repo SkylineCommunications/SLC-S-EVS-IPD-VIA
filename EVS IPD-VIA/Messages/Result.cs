@@ -2,9 +2,9 @@
 {
     using Skyline.DataMiner.Library.Common.InterAppCalls.CallSingle;
 
-    public class ResponseMessage : Message
+    public class Result : Message
     {
-        public bool IsSuccessful { get; set; }
+        public bool Success { get; set; }
 
         public string ErrorMessage { get; set; }
     }
