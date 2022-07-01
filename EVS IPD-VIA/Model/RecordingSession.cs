@@ -1,7 +1,6 @@
 ﻿namespace Skyline.DataMiner.EVS.EVS_IPD_VIA.Model
 {
     using System;
-    using System.Collections.Generic;
 
     public class RecordingSession
     {
@@ -17,13 +16,6 @@
 
         public string[] Targets { get; set; }
 
-        public Metadata metadata { get; set; }
-    }
-
-    public class Metadata
-    {
-        string[] profilesFqn { get; set; }
-
-        Dictionary<string, string> values { get; set; }
+        public Metadata[] Metadata { get; set; }
     }
 }

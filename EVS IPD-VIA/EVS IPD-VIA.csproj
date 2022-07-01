@@ -51,6 +51,7 @@
     <Compile Include="Messages\AddOrUpdateRecordingSessionResult.cs" />
     <Compile Include="Messages\DeleteRecordingSession.cs" />
     <Compile Include="Messages\DeleteRecordingSessionResult.cs" />
+    <Compile Include="Model\Metadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\RecordingSession.cs" />
     <Compile Include="Messages\Result.cs" />
