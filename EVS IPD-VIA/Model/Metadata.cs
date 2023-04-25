@@ -6,6 +6,6 @@ namespace Skyline.DataMiner.EVS.EVS_IPD_VIA.Model
     {
         public string Profile { get; set; }
 
-        public Dictionary<string, string> Values { get; set; }
+        public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
     }
 }
