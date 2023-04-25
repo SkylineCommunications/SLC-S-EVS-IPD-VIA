@@ -15,8 +15,8 @@
 
         public string Recorder { get; set; }
 
-        public List<string> Targets { get; set; } = new List<string>();
+        public IEnumerable<string> Targets { get; set; } = new List<string>();
 
-        public List<Metadata> Metadata { get; set; } = new List<Metadata>();
+        public IEnumerable<Metadata> Metadata { get; set; } = new List<Metadata>();
     }
 }
