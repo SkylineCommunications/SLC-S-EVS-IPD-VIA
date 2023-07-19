@@ -1,4 +1,4 @@
-﻿namespace Skyline.DataMiner.EVS.EVS_IPD_VIA.Messages
+﻿namespace Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA.Messages
 {
     using Skyline.DataMiner.Library.Common.InterAppCalls.CallSingle;
 

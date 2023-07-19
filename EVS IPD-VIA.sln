@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVS IPD-VIA", "EVS IPD-VIA\EVS IPD-VIA.csproj", "{AFC434F6-DBF1-4142-BB70-361CF74128FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectorAPI.EVS.IPD-VIA", "ConnectorAPI.EVS.IPD-VIA\ConnectorAPI.EVS.IPD-VIA.csproj", "{6552CB45-7B1F-439F-B1E7-896B83F53F2C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{51A84610-A3B1-4A6C-B79A-AE7064FB87DA}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +17,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AFC434F6-DBF1-4142-BB70-361CF74128FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFC434F6-DBF1-4142-BB70-361CF74128FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFC434F6-DBF1-4142-BB70-361CF74128FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFC434F6-DBF1-4142-BB70-361CF74128FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6552CB45-7B1F-439F-B1E7-896B83F53F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6552CB45-7B1F-439F-B1E7-896B83F53F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6552CB45-7B1F-439F-B1E7-896B83F53F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6552CB45-7B1F-439F-B1E7-896B83F53F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5529E9E7-D344-413F-ADFA-4B094322766C}
+		SolutionGuid = {809613E7-38F3-4D3C-A431-82F4F75882F5}
 	EndGlobalSection
 EndGlobal
