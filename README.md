@@ -2,7 +2,7 @@
 
 ## About
 
-Contains classes for interapp communication with the EVS IPD-VIA protocol.
+Contains classes for InterApp communication with the EVS IPD-VIA protocol.
 
 ## Projects
 
