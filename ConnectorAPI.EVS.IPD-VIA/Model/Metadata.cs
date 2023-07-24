@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA.Model
+﻿namespace Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA.Model
 {
-    public class Metadata
-    {
-        public string Profile { get; set; }
+	using System.Collections.Generic;
 
-        public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
-    }
+	public class Metadata
+	{
+		public string Profile { get; set; }
+
+		public Dictionary<string, string> Values { get; set; } = new Dictionary<string, string>();
+	}
 }
