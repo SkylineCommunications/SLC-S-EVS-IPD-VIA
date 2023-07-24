@@ -17,7 +17,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>SkylineCommunications</Authors>
 		<Company>Skyline Communications</Company>
-		<Description>Contains classes for interapp communication with the EVS IPD-VIA protocol.</Description>
+		<Description>Contains classes for InterApp communication with the EVS IPD-VIA protocol.</Description>
 	</PropertyGroup>
 
 	<ItemGroup>
