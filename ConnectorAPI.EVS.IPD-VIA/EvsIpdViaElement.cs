@@ -66,6 +66,11 @@
         }
 
         /// <summary>
+        /// Gets the name of the DataMiner element.
+        /// </summary>
+        public string Name => element.Name;
+
+        /// <summary>
         /// Maximum amount of time in which every request to the EVS element should be handled.
         /// Default: 30 seconds.
         /// </summary>
