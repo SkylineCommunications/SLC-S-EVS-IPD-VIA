@@ -99,6 +99,11 @@
                 throw new InvalidOperationException($"Unable to add or update recording session with id {recordingSession.Id} due to {reason}");
             }
 
+            if (!result.Success)
+            {
+                throw new InvalidOperationException($"Unable to add or update recording session with id {recordingSession.Id} due to {result.ErrorMessage}");
+            }
+
             return result.RecordingSession;
         }
 
