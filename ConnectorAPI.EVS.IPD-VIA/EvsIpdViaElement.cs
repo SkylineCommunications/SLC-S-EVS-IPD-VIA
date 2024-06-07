@@ -26,6 +26,7 @@
 
         private IDictionary<string, object[]> targetsTable;
         private IDictionary<string, object[]> recodersTable;
+        private TimeSpan? timeout;
 
         private static readonly List<Type> knownTypes = new List<Type>
         {
@@ -69,7 +70,24 @@
         /// Maximum amount of time in which every request to the EVS element should be handled.
         /// Default: 30 seconds.
         /// </summary>
-        public TimeSpan Timeout { get; set; } = TimeSpan.FromSeconds(30);
+        public TimeSpan Timeout
+        {
+            get
+            {
+                if (timeout != null) return (TimeSpan)timeout;
+                try
+                {
+                    double timeoutInSeconds = element.GetStandaloneParameter<double>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
+                    timeout = TimeSpan.FromSeconds(timeoutInSeconds);
+                    return (TimeSpan)timeout;
+                }
+                catch (Exception)
+                {
+                    timeout = TimeSpan.FromSeconds(30);
+                    return (TimeSpan)timeout;
+                }
+            }
+        }
 
         /// <summary>
         /// Adds or updates a recording session in the EVS system.
