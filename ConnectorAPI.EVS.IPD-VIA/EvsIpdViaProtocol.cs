@@ -10,6 +10,8 @@
         /// </summary>
         public static readonly string Name = "EVS IPD-VIA";
 
+        public static readonly int InterAppTimeout = 500;
+
         /// <summary>
         /// Constants related to the Recorders table.
         /// </summary>
