@@ -21,11 +21,6 @@
         /// </summary>
         public const int InterAppReceive_ParameterId = 9000000;
 
-        /// <summary>
-        /// ID of the parameter in the EVS IPD VIA protocol that's used to return outgoing InterApp messages.
-        /// </summary>
-        public const int InterAppReturn_ParameterId = 9000001;
-
         private readonly IConnection connection;
         private readonly IDmsElement element;
 
@@ -276,8 +271,6 @@
             {
                 if (requiresResponse)
                 {
-                    commands.ReturnAddress = new ReturnAddress(element.AgentId, element.Id, InterAppReturn_ParameterId);
-
                     var response = commands.Send(connection, element.AgentId, element.Id, InterAppReceive_ParameterId, Timeout, knownTypes).First();
                     if (!(response is T castResponse))
                     {
