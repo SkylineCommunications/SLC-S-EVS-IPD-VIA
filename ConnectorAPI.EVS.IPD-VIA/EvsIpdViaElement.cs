@@ -74,6 +74,7 @@
         /// <summary>
         /// Maximum amount of time in which every request to the EVS element should be handled.
         /// Default: 30 seconds.
+        /// Can be configured from the EVS element installed on the DM system (parameter 500).
         /// </summary>
         public TimeSpan Timeout
         {
