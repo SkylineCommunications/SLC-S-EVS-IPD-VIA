@@ -75,17 +75,9 @@
             get
             {
                 if (timeout != null) return (TimeSpan)timeout;
-                try
-                {
-                    double timeoutInSeconds = element.GetStandaloneParameter<double>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
-                    timeout = TimeSpan.FromSeconds(timeoutInSeconds);
-                    return (TimeSpan)timeout;
-                }
-                catch (Exception)
-                {
-                    timeout = TimeSpan.FromSeconds(30);
-                    return (TimeSpan)timeout;
-                }
+                double timeoutInSeconds = element.GetStandaloneParameter<double>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
+                timeout = TimeSpan.FromSeconds(timeoutInSeconds);
+                return (TimeSpan)timeout;
             }
         }
 
@@ -305,8 +297,15 @@
             }
             catch (Exception e)
             {
-                reason = e.ToString();
-                return false;
+                if (requiresResponse)
+                {
+                    throw new InvalidOperationException($"Configured Timeout {timeout}s", e);
+                }
+                else
+                {
+                    reason = e.ToString();
+                    return false;
+                }
             }
 
             return true;
