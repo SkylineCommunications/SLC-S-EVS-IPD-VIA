@@ -76,9 +76,9 @@
             get
             {
                 if (timeout != null) return (TimeSpan)timeout;
-                double timeoutInSeconds = element.GetStandaloneParameter<double>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
+                var timeoutInSeconds = element.GetStandaloneParameter<double?>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
                 logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds}");
-                timeout = TimeSpan.FromSeconds(timeoutInSeconds);
+                timeout = TimeSpan.FromSeconds((double)timeoutInSeconds);
                 logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in timespan: {timeout}");
                 return (TimeSpan)timeout;
             }
