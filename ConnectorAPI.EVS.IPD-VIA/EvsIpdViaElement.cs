@@ -27,6 +27,7 @@
         private IDictionary<string, object[]> targetsTable;
         private IDictionary<string, object[]> recodersTable;
         private TimeSpan? timeout;
+        private ILogger logObject;
 
         private static readonly List<Type> knownTypes = new List<Type>
         {
@@ -54,7 +55,7 @@
         /// <param name="elementId">ID of the EVS element.</param>
         /// <exception cref="ArgumentNullException">Thrown when the provided connection or the element is null.</exception>
         /// <exception cref="InvalidOperationException">Thrown when described element is inactive.</exception>
-        public EvsIpdViaElement(IConnection connection, int agentId, int elementId)
+        public EvsIpdViaElement(IConnection connection, int agentId, int elementId, ILogger logObject)
         {
             this.connection = connection ?? throw new ArgumentNullException(nameof(connection));
             element = connection.GetDms().GetElement(new DmsElementId(agentId, elementId));
@@ -76,7 +77,9 @@
             {
                 if (timeout != null) return (TimeSpan)timeout;
                 double timeoutInSeconds = element.GetStandaloneParameter<double>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
+                logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds}");
                 timeout = TimeSpan.FromSeconds(timeoutInSeconds);
+                logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in timespan: {timeout}");
                 return (TimeSpan)timeout;
             }
         }
@@ -309,6 +312,11 @@
             }
 
             return true;
+        }
+
+        public void Log(string nameOfClass, string nameOfMethod, string message)
+        {
+            
         }
     }
 }
