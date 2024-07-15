@@ -28,6 +28,5 @@
 
 	<ItemGroup>
 		<PackageReference Include="Skyline.DataMiner.Core.InterAppCalls.Common" Version="1.0.1.1" />
-		<PackageReference Include="Skyline.DataMiner.Utils.YLE.Logging" Version="1.0.2" />
 	</ItemGroup>
 </Project>
