@@ -75,11 +75,23 @@
         {
             get
             {
-                if (timeout != null) return (TimeSpan)timeout;
+                if (element == null)
+                    throw new InvalidOperationException("Element is not initialized.");
+
+                if (logObject == null)
+                    throw new InvalidOperationException("LogObject is not initialized.");
+
                 var timeoutInSeconds = element.GetStandaloneParameter<double?>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
+
+                if (!timeoutInSeconds.HasValue)
+                    throw new InvalidOperationException("Timeout value is not set.");
+
                 logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds}");
-                timeout = TimeSpan.FromSeconds((double)timeoutInSeconds);
+
+                timeout = TimeSpan.FromSeconds(timeoutInSeconds.Value);
+
                 logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in timespan: {timeout}");
+
                 return (TimeSpan)timeout;
             }
         }
