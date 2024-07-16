@@ -1,5 +1,6 @@
 ﻿namespace Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA
 {
+    using Newtonsoft.Json;
     using Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA.Messages;
     using Skyline.DataMiner.ConnectorAPI.EVS.IPD_VIA.Model;
     using Skyline.DataMiner.Core.DataMinerSystem.Common;
@@ -23,7 +24,7 @@
 
         private readonly IConnection connection;
         private readonly IDmsElement element;
-        private readonly ILogger logObject;
+        private readonly ILogger logger;
 
         private IDictionary<string, object[]> targetsTable;
         private IDictionary<string, object[]> recodersTable;
@@ -53,14 +54,14 @@
         /// <param name="connection">Connection used to communicate with the EVS element.</param>
         /// <param name="agentId">ID of the agent on which the EVS element is hosted.</param>
         /// <param name="elementId">ID of the EVS element.</param>
-        /// <param name="_logObject">Object that inherits ILogger interface used to log info if needed.</param>
+        /// <param name="logger">Object that inherits ILogger interface used to log info if needed.</param>
         /// <exception cref="ArgumentNullException">Thrown when the provided connection or the element is null.</exception>
         /// <exception cref="InvalidOperationException">Thrown when described element is inactive.</exception>
-        public EvsIpdViaElement(IConnection connection, int agentId, int elementId, ILogger _logObject)
+        public EvsIpdViaElement(IConnection connection, int agentId, int elementId, ILogger logger = null)
         {
             this.connection = connection ?? throw new ArgumentNullException(nameof(connection));
             element = connection.GetDms().GetElement(new DmsElementId(agentId, elementId));
-            logObject = _logObject;
+            this.logger = logger;
             if (element.State != ElementState.Active) throw new InvalidOperationException($"Element {element.Name} is not active");
         }
 
@@ -77,11 +78,20 @@
         {
             get
             {
-                var timeoutInSeconds = element.GetStandaloneParameter<double?>(EvsIpdViaProtocol.InterAppTimeout).GetValue();
-                logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds}");
-                timeout = TimeSpan.FromSeconds(timeoutInSeconds.Value);
-                logObject.Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in timespan: {timeout}");
-                return (TimeSpan)timeout;
+                if (timeout != null) return (TimeSpan)timeout;
+                try
+                {
+                    var timeoutInSeconds = element.GetStandaloneParameter<double?>(EvsIpdViaProtocol.InterAppTimeout) ?? throw new NullReferenceException("InterApp Timeout value is null.");
+                    timeout = TimeSpan.FromSeconds(timeoutInSeconds.GetValue().Value);
+                    Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds} | Timespan: {timeout}");
+                    return (TimeSpan)timeout;
+                }
+                catch (Exception e)
+                {
+                    timeout = TimeSpan.FromSeconds(30);
+                    Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Unable to retrieve timeout due to: {e}");
+                    return (TimeSpan)timeout;
+                }
             }
         }
 
@@ -281,6 +291,8 @@
             var commands = InterAppCallFactory.CreateNew();
             commands.Messages.Add(message);
 
+            Log(nameof(EvsIpdViaElement), nameof(TrySendMessage), $"Message: {JsonConvert.SerializeObject(message)}");
+
             try
             {
                 if (requiresResponse)
@@ -292,6 +304,7 @@
                         return false;
                     }
 
+                    Log(nameof(EvsIpdViaElement), nameof(TrySendMessage), $"Response: {JsonConvert.SerializeObject(response)}");
                     responseMessage = castResponse;
                 }
                 else
@@ -301,23 +314,23 @@
             }
             catch (Exception e)
             {
-                if (requiresResponse)
-                {
-                    throw new InvalidOperationException($"Configured Timeout {timeout}s", e);
-                }
-                else
-                {
-                    reason = e.ToString();
-                    return false;
-                }
+                reason = e.ToString();
+                return false;
             }
 
             return true;
         }
 
+        /// <summary>
+        /// Log info that will be used for debug. If logObject is null, log method won't provide any logging.
+        /// </summary>
+        /// <param name="nameOfClass">Name of class log info is coming from.</param>
+        /// <param name="nameOfMethod">Name of method log info is coming from.</param>
+        /// <param name="message">Message that will be logged.</param>
         public void Log(string nameOfClass, string nameOfMethod, string message)
         {
-            
+            if (logger == null) return;
+            logger.Log(nameOfClass, nameOfMethod, message);
         }
     }
 }
