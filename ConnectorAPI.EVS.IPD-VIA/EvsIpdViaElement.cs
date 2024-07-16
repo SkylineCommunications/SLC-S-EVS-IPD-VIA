@@ -53,12 +53,14 @@
         /// <param name="connection">Connection used to communicate with the EVS element.</param>
         /// <param name="agentId">ID of the agent on which the EVS element is hosted.</param>
         /// <param name="elementId">ID of the EVS element.</param>
+        /// <param name="_logObject">Object that inherits ILogger interface used to log info if needed.</param>
         /// <exception cref="ArgumentNullException">Thrown when the provided connection or the element is null.</exception>
         /// <exception cref="InvalidOperationException">Thrown when described element is inactive.</exception>
-        public EvsIpdViaElement(IConnection connection, int agentId, int elementId, ILogger logObject)
+        public EvsIpdViaElement(IConnection connection, int agentId, int elementId, ILogger _logObject)
         {
             this.connection = connection ?? throw new ArgumentNullException(nameof(connection));
             element = connection.GetDms().GetElement(new DmsElementId(agentId, elementId));
+            logObject = _logObject;
             if (element.State != ElementState.Active) throw new InvalidOperationException($"Element {element.Name} is not active");
         }
 
