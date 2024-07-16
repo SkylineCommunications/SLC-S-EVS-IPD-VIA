@@ -83,7 +83,7 @@
                 {
                     var timeoutInSeconds = element.GetStandaloneParameter<double?>(EvsIpdViaProtocol.InterAppTimeout) ?? throw new NullReferenceException("InterApp Timeout value is null.");
                     timeout = TimeSpan.FromSeconds(timeoutInSeconds.GetValue().Value);
-                    Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout in seconds: {timeoutInSeconds} | Timespan: {timeout}");
+                    Log(nameof(EvsIpdViaElement), nameof(Timeout), $"Timeout timespan: {timeout}");
                     return (TimeSpan)timeout;
                 }
                 catch (Exception e)
